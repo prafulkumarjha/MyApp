@@ -5,12 +5,23 @@
   Time: 1:20 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@include file="/WEB-INF/jsp/template/header.jsp"%>
+
+
+<div class="container-wrapper">
+    <div class="container">
+        <div class="page-header">
+            <h1>All Products</h1>
+
+            <p class="lead">This is the Administrator page</p>
+        </div>
+
+        <h3>
+            <a href="<c:url value="/admin/productInventory" />">Product Inventory</a>
+        </h3>
+
+        <p> Here you can view check and modify your inventory. </p>
+
+        <%@include file="/WEB-INF/jsp/template/footer.jsp" %>

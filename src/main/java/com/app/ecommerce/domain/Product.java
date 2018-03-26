@@ -1,9 +1,11 @@
 package com.app.ecommerce.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * created by Praful Jha on 18/03/2018
@@ -13,6 +15,7 @@ import javax.persistence.Id;
 @Entity
 public class Product {
 
+    @NotEmpty(message = "Product Name can't be Empty")
     private String productName;
 
     @Id
@@ -21,11 +24,18 @@ public class Product {
 
     private String productCategory;
     private String productDescription;
+
+    @Min(value = 0, message = "Price can't be less than Zero")
     private double productPrice;
     private String productCondition;
     private String productStatus;
     private String brandName;
+
+    @Min(value = 0, message = "Unit can't be less than Zero")
     private int unitInStock;
+
+    @Transient
+    private MultipartFile productImage;
 
     public Product() {
     }
@@ -112,6 +122,14 @@ public class Product {
 
     public void setUnitInStock(int unitInStock) {
         this.unitInStock = unitInStock;
+    }
+
+    public MultipartFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
     }
 
 

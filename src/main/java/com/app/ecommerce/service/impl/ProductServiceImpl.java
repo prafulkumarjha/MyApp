@@ -1,6 +1,5 @@
 package com.app.ecommerce.service.impl;
 
-import com.app.ecommerce.dao.ProductDao;
 import com.app.ecommerce.domain.Product;
 import com.app.ecommerce.repository.ProductRepository;
 import com.app.ecommerce.service.ProductService;
@@ -38,5 +37,11 @@ public class ProductServiceImpl implements ProductService {
        Product product1 =  productRepository.save(product);
 
         return product1;
+    }
+
+    @Override
+    public int deleteProduct(String productCode) {
+      int val = productRepository.deleteByProductCode(productCode);
+        return val;
     }
 }

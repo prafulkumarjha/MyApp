@@ -37,7 +37,7 @@ public class ProductController {
         return "productList";
     }
 
-    @RequestMapping(value = "/{productCode}")
+    @RequestMapping(value = {"/{productCode}","admin/productInventory/{productCode}"})
     public ModelAndView viewProduct(@PathVariable String productCode, ModelAndView model) throws IOException {
 
         Product product = productService.getProductByCode(productCode);
@@ -57,5 +57,20 @@ public class ProductController {
         return "productAdded";
 
     }
+
+    @RequestMapping(value = "/admin")
+    public ModelAndView productAdminPage( ModelAndView model) throws IOException {
+
+        model.setViewName("productAdmin");
+
+        // return "viewProduct";
+        return model;
+    }
+
+
+
+
+
+
 
 }
